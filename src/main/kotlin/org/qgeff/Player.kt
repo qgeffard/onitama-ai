@@ -1,5 +1,10 @@
-package org.example
+package org.qgeff
 
-class Player(val color:) {
+import org.qgeff.enums.Color
 
+class Player(val color: Color) {
+
+    override fun toString(): String {
+        return "Player(color=$color)"
+    }
 }

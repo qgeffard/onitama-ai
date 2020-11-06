@@ -1,4 +1,4 @@
-package org.example
+package org.qgeff
 
 object Board {
     var state = listOf(
@@ -17,7 +17,7 @@ object Board {
         return state.filter { case -> case.first == rowIndex }
     }
 
-    fun getRedkingCell(): Triple<Int, Int, Int> {
+    fun getRedKngCell(): Triple<Int, Int, Int> {
         return state.first { case -> case.third == 4 }
     }
 
