@@ -6,16 +6,29 @@ import org.qgeff.enums.Color
 fun main() {
 
     val deck = pickFiveCards()
-
-    println(deck)
-
     val player = Player(Color.BLUE, isAI = false)
     val ai = Player(Color.RED, isAI = true)
 
     distributeCards(deck, player, ai)
+    assignPawns(player,ai,Board)
+
     println(player)
     println(ai)
 
+    start()
+
+
+}
+
+fun start() {
+
+
+
+}
+
+fun assignPawns(player: Player, ai: Player, board: Board) {
+    player.pawns.addAll(board.getBluePawns())
+    ai.pawns.addAll(board.getRedPawns())
 }
 
 fun distributeCards(deck: Set<Card>, player: Player, ai: Player) {
