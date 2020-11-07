@@ -1,5 +1,8 @@
 package org.qgeff
 
+import org.qgeff.cli.PrettyPrinter
+import org.qgeff.entity.Board
+import org.qgeff.entity.Player
 import org.qgeff.enums.Card
 import org.qgeff.enums.Color
 
@@ -10,7 +13,7 @@ fun main() {
     val ai = Player(Color.RED, isAI = true)
 
     distributeCards(deck, player, ai)
-    assignPawns(player,ai,Board)
+    assignPawns(player,ai, Board)
 
     println(player)
     println(ai)
@@ -21,6 +24,11 @@ fun main() {
 }
 
 fun start() {
+
+    PrettyPrinter.formatBoard(Board)
+    PrettyPrinter.printBlueTurn()
+
+
 
 
 
