@@ -1,5 +1,7 @@
 package org.qgeff.enums
 
+import java.util.*
+
 enum class Card {
 
     /**
@@ -184,6 +186,16 @@ enum class Card {
      */
     COBRA{
 
+    };
+
+    companion object{
+        /**
+         * Pick a random Card .
+         * @return a random Card.
+         */
+        open fun getRandomCard(): Card {
+            return values()[Random().nextInt(values().size)]
+        }
     }
 
 }
