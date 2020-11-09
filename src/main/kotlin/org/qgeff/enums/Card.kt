@@ -12,15 +12,9 @@ enum class Card {
      * 00000
      */
     TIGER {
-
-        fun up() {
-
-        }
-
-        fun down(){
-
-        }
-
+        override val directions = listOf(
+                Triple(Direction.N,0,2)
+                , Triple(Direction.S,0,-1))
     },
 
     /**
@@ -31,7 +25,11 @@ enum class Card {
      * 00000
      */
     DRAGON{
-
+        override val directions = listOf(
+                Triple(Direction.NW, -2,1)
+                , Triple(Direction.NE, 2,1)
+                , Triple(Direction.SE, 1,-1)
+                , Triple(Direction.SW, -1, -1))
     },
 
     /**
@@ -42,7 +40,10 @@ enum class Card {
      * 00000
      */
     FROG{
-
+        override val directions = listOf(
+                Triple(Direction.W, -2, 0)
+                , Triple(Direction.NW, -1,1)
+                , Triple(Direction.SE, 1,-1))
     },
 
     /**
@@ -53,7 +54,10 @@ enum class Card {
      * 00000
      */
     RABBIT{
-
+        override val directions = listOf(
+                Triple(Direction.SW,-1,-1)
+                , Triple(Direction.NE, 1,1)
+                , Triple(Direction.W,2,0))
     },
 
     /**
@@ -64,7 +68,10 @@ enum class Card {
      * 00000
      */
     CRAB{
-
+        override val directions = listOf(
+                Triple(Direction.W,-2,0)
+                , Triple(Direction.N,0,1)
+                , Triple(Direction.E,2,0))
     },
 
     /**
@@ -75,7 +82,11 @@ enum class Card {
      * 00000
      */
     ELEPHANT{
-
+        override val directions = listOf(
+                Triple(Direction.W, -1,0)
+                , Triple(Direction.NW, -1,1)
+                , Triple(Direction.NE, 1,1)
+                , Triple(Direction.E, 1,0))
     },
 
     /**
@@ -86,7 +97,11 @@ enum class Card {
      * 00000
      */
     GOOSE{
-
+        override val directions = listOf(
+                Triple(Direction.W,-1,0)
+                , Triple(Direction.NW, -1,1)
+                , Triple(Direction.E, 1,0)
+                , Triple(Direction.SE,1,-1))
     },
 
     /**
@@ -97,7 +112,11 @@ enum class Card {
      * 00000
      */
     ROOSTER{
-
+        override val directions = listOf(
+                Triple(Direction.SW, -1,-1)
+                , Triple(Direction.W,-1,0)
+                , Triple(Direction.NE,1,1)
+                , Triple(Direction.E,1,0))
     },
 
     /**
@@ -108,7 +127,11 @@ enum class Card {
      * 00000
      */
     MONKEY{
-
+        override val directions = listOf(
+                Triple(Direction.SW,-1,-1)
+                , Triple(Direction.NW,-1,1)
+                , Triple(Direction.NE,1,1)
+                , Triple(Direction.SE,1,-1))
     },
 
     /**
@@ -119,7 +142,10 @@ enum class Card {
      * 00000
      */
     MANTIS{
-
+        override val directions = listOf(
+                Triple(Direction.NW,-1,1)
+                , Triple(Direction.NE, 1,1)
+                , Triple(Direction.S, 0,-1))
     },
 
     /**
@@ -130,7 +156,10 @@ enum class Card {
      * 00000
      */
     HORSE{
-
+        override val directions = listOf(
+                Triple(Direction.W, -1,0)
+                , Triple(Direction.N, 0,1)
+                , Triple(Direction.S, 0,-1))
     },
 
     /**
@@ -141,7 +170,10 @@ enum class Card {
      * 00000
      */
     OX{
-
+        override val directions = listOf(
+                Triple(Direction.N,0,1)
+                , Triple(Direction.E,1,0)
+                , Triple(Direction.S,0,-1))
     },
 
     /**
@@ -152,7 +184,10 @@ enum class Card {
      * 00000
      */
     CRANE{
-
+        override val directions = listOf(
+                Triple(Direction.SW,-1,-1)
+                , Triple(Direction.N,0,1)
+                , Triple(Direction.SE,1,-1))
     },
 
     /**
@@ -163,7 +198,10 @@ enum class Card {
      * 00000
      */
     BOAR{
-
+        override val directions = listOf(
+                Triple(Direction.W,-1,0)
+                , Triple(Direction.N,0,1)
+                , Triple(Direction.E,1,0))
     },
 
     /**
@@ -174,7 +212,10 @@ enum class Card {
      * 00000
      */
     EEL{
-
+        override val directions = listOf(
+                Triple(Direction.SW,-1,-1)
+                , Triple(Direction.NW,-1,1)
+                , Triple(Direction.E,1,0))
     },
 
     /**
@@ -185,8 +226,13 @@ enum class Card {
      * 00000
      */
     COBRA{
-
+        override val directions = listOf(
+                Triple(Direction.W,-1,0)
+                , Triple(Direction.NE, 1,1)
+                , Triple(Direction.SE, 1,-1))
     };
+
+    abstract val directions : List<Triple<Direction,Int,Int>>
 
     companion object{
         /**

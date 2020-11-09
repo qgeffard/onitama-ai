@@ -18,18 +18,38 @@ fun main() {
     println(player)
     println(ai)
 
-    start()
+    start(player,ai,Board)
 
 
 }
 
-fun start() {
+fun start(player: Player, ai: Player, board: Board) {
 
-    PrettyPrinter.formatBoard(Board)
+
     PrettyPrinter.printBlueTurn()
+    blueTurn(player,board)
 
+    PrettyPrinter.printBoard(board)
 
+}
 
+fun blueTurn(player: Player, board: Board) {
+    PrettyPrinter.printBoard(board)
+
+    //card choice
+    PrettyPrinter.printCards(player.hand)
+    val selectedCard = player.hand[readLine()!!.toInt()]
+
+    //pawn choice
+    PrettyPrinter.printPawns(player.pawns)
+    val selectedPawn = player.pawns[readLine()!!.toInt()]
+
+    //direction choice
+    PrettyPrinter.printCardDirections(selectedCard)
+    val selectedDirection = selectedCard.directions[readLine()!!.toInt()]
+
+    //Apply player choices to the board
+    board.applyCard(selectedCard, selectedPawn, selectedDirection)
 
 
 }
