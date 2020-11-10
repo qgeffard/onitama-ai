@@ -2,6 +2,7 @@ package org.qgeff.cli
 
 import org.qgeff.entity.Board
 import org.qgeff.entity.Pawn
+import org.qgeff.entity.Player
 import org.qgeff.enums.Card
 import org.qgeff.enums.Color
 
@@ -25,14 +26,9 @@ object PrettyPrinter {
         }
     }
 
-    fun printBlueTurn(){
+    fun printTurn(player: Player){
         println()
-        println("----- BLUE TURN ----")
-    }
-
-    fun printRedTurn(){
-        println()
-        println("----- RED TURN ----")
+        println("----- ${player.color} TURN ----")
     }
 
     fun printCards(hand: MutableList<Card>) {

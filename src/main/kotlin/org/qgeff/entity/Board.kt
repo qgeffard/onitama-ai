@@ -5,7 +5,7 @@ import org.qgeff.enums.Color
 import org.qgeff.enums.Direction
 
 object Board {
-    private val state = mutableListOf(
+    val state = mutableListOf(
             Triple(0, 4, Pawn(0, false, Color.RED)), Triple(1, 4, Pawn(1, false, Color.RED)), Triple(2, 4, Pawn(2, true, Color.RED)), Triple(3, 4, Pawn(3, false, Color.RED)), Triple(4, 4, Pawn(4, false, Color.RED))
             , Triple(0, 3, null), Triple(1, 3, null), Triple(2, 3, null), Triple(3, 3, null), Triple(4, 3, null)
             , Triple(0, 2, null), Triple(1, 2, null), Triple(2, 2, null), Triple(3, 2, null), Triple(4, 2, null)
@@ -19,10 +19,10 @@ object Board {
         val oldPawnCase = getCaseFromXY(Pair(newPawnCase.first, newPawnCase.second))
         val newOldPawnCase = Triple(currentPawnCase.first, currentPawnCase.second, null)
         state.add(state.indexOf(oldPawnCase), newPawnCase)
-        state.removeAt(state.indexOf(oldPawnCase) + 1)
+        state.removeAt(state.indexOf(newPawnCase) + 1)
 
         state.add(state.indexOf(currentPawnCase),newOldPawnCase)
-        state.removeAt(state.indexOf(currentPawnCase)+1)
+        state.removeAt(state.indexOf(newOldPawnCase)+1)
         return state
     }
 
