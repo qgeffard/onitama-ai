@@ -14,14 +14,14 @@ object PrettyPrinter {
                 if (it.third != null)
                     if (it.third!!.color == Color.BLUE)
                         if (it.third!!.isKing)
-                            "bK "
-                        else "bP "
+                            "${it.third!!.id}bK "
+                        else "${it.third!!.id}bP "
                     else
                         if (it.third!!.isKing)
-                            "rK "
-                        else "rP "
+                            "${it.third!!.id}rK "
+                        else "${it.third!!.id}rP "
                 else
-                    "__ "
+                    "___ "
             })
         }
     }

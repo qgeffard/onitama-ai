@@ -45,7 +45,7 @@ fun turn(currentPlayer: Player, adversary: Player, board: Board) {
     val selectedDirection = selectedCard.directions[readLine()!!.toInt()]
 
     //Apply player choices to the board
-    board.applyCard(selectedCard, selectedPawn, selectedDirection)
+    board.applyCard(selectedPawn, selectedDirection, currentPlayer)
 
     //Check victory condition
     if (checkVictory(board)) {

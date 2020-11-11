@@ -3,6 +3,7 @@ package org.qgeff.entity
 import org.qgeff.enums.Card
 import org.qgeff.enums.Color
 import org.qgeff.enums.Direction
+import kotlin.math.absoluteValue
 
 object Board {
     val state = mutableListOf(
@@ -13,9 +14,16 @@ object Board {
             , Triple(0, 0, Pawn(5, false, Color.BLUE)), Triple(1, 0, Pawn(6, false, Color.BLUE)), Triple(2, 0, Pawn(7, true, Color.BLUE)), Triple(3, 0, Pawn(8, false, Color.BLUE)), Triple(4, 0, Pawn(9, false, Color.BLUE))
     )
 
-    fun applyCard(card: Card, pawn: Pawn, direction: Triple<Direction,Int,Int>): List<Triple<Int, Int, Pawn?>> {
+    fun applyCard(pawn: Pawn, direction: Triple<Direction, Int, Int>, currentPlayer: Player): List<Triple<Int, Int, Pawn?>> {
         val currentPawnCase = getCaseFromPawn(pawn)!!
-        val newPawnCase = Triple(currentPawnCase.first+direction.second, currentPawnCase.second+direction.third,pawn)
+
+        // revert board orientation by inverting pawn moves depending on the currentPlayer
+        val newPawnCase =
+                if(currentPlayer.color == Color.BLUE)
+                    Triple(currentPawnCase.first+direction.second, currentPawnCase.second+direction.third,pawn)
+                else
+                    Triple(currentPawnCase.first+direction.second.opposite(), currentPawnCase.second+direction.third.opposite(),pawn)
+
         val oldPawnCase = getCaseFromXY(Pair(newPawnCase.first, newPawnCase.second))
         val newOldPawnCase = Triple(currentPawnCase.first, currentPawnCase.second, null)
         state.add(state.indexOf(oldPawnCase), newPawnCase)
@@ -52,5 +60,13 @@ object Board {
 
     override fun toString(): String {
         return state.toString()
+    }
+
+    fun Int.opposite():Int{
+        return when {
+            this > 0 -> -(this.absoluteValue)
+            this < 0 -> this.absoluteValue
+            else -> 0
+        }
     }
 }
